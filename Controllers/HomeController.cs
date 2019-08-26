@@ -14,6 +14,5 @@ namespace YourAnimeList.Controllers
       }
       return View(animes);
     }
-
   }
 }

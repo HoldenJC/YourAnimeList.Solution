@@ -28,3 +28,5 @@
 /Users/Guest/Desktop/YourAnimeList.Solution/obj/Debug/netcoreapp2.2/YourAnimeList.dll
 /Users/Guest/Desktop/YourAnimeList.Solution/obj/Debug/netcoreapp2.2/YourAnimeList.pdb
 /Users/Guest/Desktop/YourAnimeList.Solution/obj/Debug/netcoreapp2.2/YourAnimeList.csproj.CopyComplete
+/Users/Guest/Desktop/YourAnimeList.Solution/obj/Debug/netcoreapp2.2/Razor/Views/Account/Login.g.cshtml.cs
+/Users/Guest/Desktop/YourAnimeList.Solution/obj/Debug/netcoreapp2.2/Razor/Views/Account/Register.g.cshtml.cs
