@@ -15,5 +15,15 @@ namespace YourAnimeList.Controllers
       return View(animes);
     }
 
+    public IActionResult Details(string animeId)
+    {
+      var animeDetails = AnimeFull.GetAnimeDetails("1");
+      if(animeId != null && animeId != "")
+      {
+        animeDetails = AnimeFull.GetAnimeDetails(animeId);
+      }
+      return View(animeDetails);
+    }
+
   }
 }

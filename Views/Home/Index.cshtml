@@ -10,16 +10,20 @@
 
 <h2>All Animes</h2>
 <hr />
-<ol>
-    @foreach (var anime in Model)
-    {
-        <li>
-            <ul>
+<ul>
+
+    <div class="row">
+
+        @foreach (var anime in Model)
+        {
+            <div class="col-md-4"> 
+                <a href="@Url.Action("Details", "Home", new { AnimeId = anime.Mal_Id })">
+                <img src=@Html.DisplayFor(modelItem => anime.Image_Url)> </a>
                 <li>Title: @Html.DisplayFor(modelItem => anime.Title)</li>
-                <li>Url: @Html.DisplayFor(modelItem => anime.Url)</li>
                 <li>Synopsis: @Html.DisplayFor(modelItem => anime.Synopsis)</li>
-                <li>CoverArt: <img src=@Html.DisplayFor(modelItem => anime.Image_Url)></li>
-            </ul>
-        </li>
-    }
-</ol>
+            </div>
+        }
+
+    </div>
+    
+</ul>
