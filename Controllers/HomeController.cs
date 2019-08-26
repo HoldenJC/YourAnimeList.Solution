@@ -5,10 +5,15 @@ namespace YourAnimeList.Controllers
 {
   public class HomeController : Controller
   {
-    public IActionResult Index()
+    public IActionResult Index(string searchString)
     {
-      var allAnimes = Anime.GetAnimes("yuyu");
-      return View(allAnimes);
+      var animes = Anime.GetAnimes("naruto");
+      if(searchString != null && searchString != "")
+      {
+        animes = Anime.GetAnimes(searchString);
+      }
+      return View(animes);
     }
+
   }
 }
