@@ -36,7 +36,7 @@ namespace YourAnimeList.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("/Home/Index");
+                return RedirectToAction("Index","Home");
             }
             else
             {
