@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using YourAnimeList.Models;
 
 namespace YourAnimeList
 {
@@ -30,6 +33,24 @@ namespace YourAnimeList
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            //code for Identity Authentication
+            services.AddEntityFrameworkMySql()
+              .AddDbContext<YourAnimeListContext>(options => options
+              .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                      .AddEntityFrameworkStores<YourAnimeListContext>()
+                      .AddDefaultTokenProviders();
+            //Password Options
+            services.Configure<IdentityOptions>(options =>
+                {
+                    options.Password.RequireDigit = true; //require number 
+                    options.Password.RequiredLength = 6; //minimum pw length
+                    options.Password.RequireLowercase = true; //require lowercase letters
+                    options.Password.RequireNonAlphanumeric = false; //"Special" characters
+                    options.Password.RequireUppercase = true; //require uppercase letters
+                    options.Password.RequiredUniqueChars = 2; //number of unique characters (ie. 'ttss' would satisfy '2')
+                });
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -52,6 +73,7 @@ namespace YourAnimeList
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication(); //required for Identity auth
 
             app.UseMvc(routes =>
             {

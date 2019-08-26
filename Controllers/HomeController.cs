@@ -14,6 +14,7 @@ namespace YourAnimeList.Controllers
       }
       return View(animes);
     }
+<<<<<<< HEAD
 
     public IActionResult Details(string animeId)
     {
@@ -25,5 +26,7 @@ namespace YourAnimeList.Controllers
       return View(animeDetails);
     }
 
+=======
+>>>>>>> security
   }
 }

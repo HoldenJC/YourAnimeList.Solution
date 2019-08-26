@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@using YourAnimeList.ViewModels
+
+@model LoginViewModel
+
+<h2>Log in with your account</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+    <br>
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password)
+
+    <input type="Submit" value="Log in" class="btn btn-default" />
+  <hr>
+  <p>No Account?</p>
+    @Html.ActionLink("Register Here", "Register")
+}
