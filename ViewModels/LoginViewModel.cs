@@ -1,4 +1,4 @@
-namespace PierreTreats.ViewModels
+namespace YourAnimeList.ViewModels
 {
     public class LoginViewModel
     {
