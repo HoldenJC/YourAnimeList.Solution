@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace YourAnimeList.Web.Pages
+namespace YourAnimeList.Solution.Pages
 {
     public class IndexModel : PageModel
     {

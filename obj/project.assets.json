@@ -12081,11 +12081,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Guest/Desktop/YourAnimeList.Solution/YourAnimeList.Api/YourAnimeList.Api.csproj",
-      "projectName": "YourAnimeList.Api",
-      "projectPath": "/Users/Guest/Desktop/YourAnimeList.Solution/YourAnimeList.Api/YourAnimeList.Api.csproj",
+      "projectUniqueName": "/Users/Guest/Desktop/YourAnimeList.Solution/YourAnimeList.Solution.csproj",
+      "projectName": "YourAnimeList.Solution",
+      "projectPath": "/Users/Guest/Desktop/YourAnimeList.Solution/YourAnimeList.Solution.csproj",
       "packagesPath": "/Users/Guest/.nuget/packages/",
-      "outputPath": "/Users/Guest/Desktop/YourAnimeList.Solution/YourAnimeList.Api/obj/",
+      "outputPath": "/Users/Guest/Desktop/YourAnimeList.Solution/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

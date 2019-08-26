@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace YourAnimeList.Web
+namespace YourAnimeList.Solution
 {
     public class Startup
     {
