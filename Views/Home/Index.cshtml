@@ -1,0 +1,16 @@
+﻿@model IEnumerable<YourAnimeList.Models.Anime>
+
+<h2>All Animes</h2>
+<hr />
+<ol>
+    @foreach (var anime in Model)
+    {
+        <li>
+            <ul>
+                <li>Title: @Html.DisplayFor(modelItem => anime.Title)</li>
+                <li>Url: @Html.DisplayFor(modelItem => anime.Url)</li>
+                <li>Synopsis: @Html.DisplayFor(modelItem => anime.Synopsis)</li>
+            </ul>
+        </li>
+    }
+</ol>
