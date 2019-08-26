@@ -13,6 +13,7 @@ namespace YourAnimeList.Models
     public string Title { get; set; }
     public string Url { get; set; }
     public string Synopsis { get; set; }
+    public string Image_Url {get; set; }
 
     public static List<Anime> GetAnimes(string query)
     {

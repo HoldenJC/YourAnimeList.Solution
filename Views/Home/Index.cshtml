@@ -18,6 +18,7 @@
                 <li>Title: @Html.DisplayFor(modelItem => anime.Title)</li>
                 <li>Url: @Html.DisplayFor(modelItem => anime.Url)</li>
                 <li>Synopsis: @Html.DisplayFor(modelItem => anime.Synopsis)</li>
+                <li>CoverArt: <img src=@Html.DisplayFor(modelItem => anime.Image_Url)></li>
             </ul>
         </li>
     }
