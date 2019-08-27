@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<YourAnimeList.Models.Anime>
 
-
 <h4>Search for Anime</h4>
 <form asp-controller="Home" asp-action="Index">
     <p>
@@ -8,7 +7,7 @@
     </p>
 </form>
 
-<h2 class="title">All Animes</h2>
+<h2 class="title">@Model.First().Title / Similar Titles</h2>
 <hr />
 <ul class="noBullet">
 
