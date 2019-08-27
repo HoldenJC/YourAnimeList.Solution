@@ -1,12 +1,13 @@
 @model YourAnimeList.Models.AnimeFull
 
-
 <h4>Search for Anime</h4>
 <form asp-controller="Home" asp-action="Index">
     <p>
     Title: <input type="text" name="SearchString">
     </p>
 </form>
+ 
+@Model.Related["Adaptation"][0]["name"]
 
 <h2 class="title">@Model.Title</h2>
 <hr />
