@@ -31,9 +31,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        <!-- Authentication isn't working, always prints out else statement -->
+                        @if (@User.Identity.IsAuthenticated)
+                        {
+                        <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Details">Hello User.Identity.Name</a>
+                        </li>
+                        <li>
+                            @using (Html.BeginForm("LogOff", "Account"))
+                            {
+                                <input type="submit" class="btn btn-default" value="Log Out"/>
+                            }
+                        </li>
+                        } 
+                        <!-- If no user logged in or credentials not accepted, present 'login option' -->
+                        else 
+                        {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                         </li>
+                        }
+                        <!-- end login/navbar -->
                     </ul>
                 </div>
             </div>

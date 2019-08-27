@@ -9,7 +9,7 @@ using YourAnimeList.Models;
 namespace YourAnimeList.Migrations
 {
     [DbContext(typeof(YourAnimeListContext))]
-    [Migration("20190826225305_Initial")]
+    [Migration("20190827173048_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,6 +161,8 @@ namespace YourAnimeList.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
+                    b.Property<int>("UserId");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
@@ -174,6 +176,23 @@ namespace YourAnimeList.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("YourAnimeList.Models.UserAnime", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Comments")
+                        .IsRequired();
+
+                    b.Property<int>("Mal_Id");
+
+                    b.Property<bool>("Watched");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserAnime");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
