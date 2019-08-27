@@ -8,22 +8,24 @@
     </p>
 </form>
 
-<h2>All Animes</h2>
+<h2 class="title">@Model.Title</h2>
 <hr />
-<ul>
+<ul class="noBullet">
 
     <div class="row">
 
             <div class="col-md-4"> 
-                <li>Title: @Model.Title</li>
                 <li>Title English: @Model.Title_English</li>
                 <li>Title Japanese: @Model.Title_Japanese</li>
                 <li>Synopsis: @Model.Synopsis</li>
-                <li><div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src=@Model.Trailer_Url allowfullscreen></iframe>
-                </div></li>
             </div>
-        
+            <div class="col">
+                <li>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src=@Model.Trailer_Url allowfullscreen></iframe>
+                    </div>
+                </li>
+            </div>
 
     </div>
         
