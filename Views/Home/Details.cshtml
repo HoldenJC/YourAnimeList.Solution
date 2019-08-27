@@ -1,21 +1,29 @@
 @model YourAnimeList.Models.AnimeFull
 
-<h4>Search for Anime</h4>
+<div class="title card border-0 mt-1 mb-1">
+<h4 class="mb-3">Search for Anime</h4>
 <form asp-controller="Home" asp-action="Index">
     <p>
-    Title: <input type="text" name="SearchString">
+        <input class="animeSearch title shadow border-0" type="text" name="SearchString" placeholder="e.g. Naruto">
     </p>
 </form>
+</div>
 
 <h2 class="title">@Model.Title</h2>
 <hr />
 <ul class="noBullet">
 
     <div class="row">
-        <div class="col-md-4"> 
-            <li>Title English: @Model.Title_English</li>
-            <li>Title Japanese: @Model.Title_Japanese</li>
-            <li>Synopsis: @Model.Synopsis</li>
+        <div class="col-md-5"> 
+            <div class="card bg-light border-0 rounded-0 px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm stats"><li>Title English: @Model.Title_English</li></div>
+            <div class="card bg-light border-0 rounded-0 px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm stats"><li>Title Japanese: @Model.Title_Japanese</li></div>
+            <div class="card bg-light border-0 rounded-0 px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm stats"><li>Synopsis: @Model.Synopsis</li></div>
+            <div class="card bg-light border-0 rounded-0 px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm stats">
+                <li>Episodes: @Model.Episodes</li>
+                <li>Review Score: @Model.Score</li>
+                <li># of Reviews: @Model.Scored_By</li>
+                <li>Popularity: @Model.Popularity</li>
+            </div>
         </div>
 
         <div class="col">
@@ -25,7 +33,7 @@
                 </div>
             </li>
             <div class="list-group">
-            <li>Related Anime</li>
+            <li class="title">Related Anime</li>
             @foreach(var item in Model.Related)
                     {
                         @foreach(var x in item.Value)

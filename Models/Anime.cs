@@ -49,6 +49,10 @@ namespace YourAnimeList.Models
     public string Title_English { get; set; }
     public string Title_Japanese { get; set; }
     public string Synopsis { get; set; }
+    public int Episodes { get; set; }
+    public float Score { get; set; }
+    public int Scored_By { get; set; }
+    public int Popularity { get; set; }
     public JObject Related { get; set; }
 
     public static AnimeFull GetAnimeDetails(string id)

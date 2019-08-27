@@ -78,6 +78,10 @@ li {
   height: auto;
 }
 
+.animeSearch {
+  width: 50%;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -105,4 +109,8 @@ li {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.stats {
+  vertical-align: middle !important;
 }
