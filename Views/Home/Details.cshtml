@@ -6,28 +6,37 @@
     Title: <input type="text" name="SearchString">
     </p>
 </form>
- 
-@Model.Related["Adaptation"][0]["name"]
 
 <h2 class="title">@Model.Title</h2>
 <hr />
 <ul class="noBullet">
 
     <div class="row">
+        <div class="col-md-4"> 
+            <li>Title English: @Model.Title_English</li>
+            <li>Title Japanese: @Model.Title_Japanese</li>
+            <li>Synopsis: @Model.Synopsis</li>
+        </div>
 
-            <div class="col-md-4"> 
-                <li>Title English: @Model.Title_English</li>
-                <li>Title Japanese: @Model.Title_Japanese</li>
-                <li>Synopsis: @Model.Synopsis</li>
+        <div class="col">
+            <li>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src=@Model.Trailer_Url allowfullscreen></iframe>
+                </div>
+            </li>
+            <div class="list-group">
+            <li>Related Anime</li>
+            @foreach(var item in Model.Related)
+                    {
+                        @foreach(var x in item.Value)
+                        {
+                            @if(@x["type"].ToString() == "anime")
+                            {
+                                <a href="@Url.Action("Details", "Home", new { AnimeId = @x["mal_id"].ToString() })" class="list-group-item list-group-item-action list-group-item-primary">@x["name"]</a>
+                            }
+                        }
+                    }
             </div>
-            <div class="col">
-                <li>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src=@Model.Trailer_Url allowfullscreen></iframe>
-                    </div>
-                </li>
-            </div>
-
-    </div>
-        
+        </div>
+    </div>       
 </ul>
