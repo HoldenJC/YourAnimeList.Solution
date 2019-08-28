@@ -79,7 +79,36 @@ li {
 }
 
 .animeSearch {
-  width: 50%;
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+}
+
+.animeSearch {
+  background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Fhawcons%2F32%2F698627-icon-111-search-256.png&f=1');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.brand img {
+  max-height: 50px;
+}
+
+.nav-login {
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.navbar {
+  background-color: #008CBA !important;
+}
+
+.nav-link {
+  vertical-align: middle !important;
 }
 
 .overlay {
@@ -113,4 +142,14 @@ li {
 
 .stats {
   vertical-align: middle !important;
+}
+
+.logo-bg {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 700px;
+  margin-top: -350px; /* Half the height */
+  margin-left: -350px;
 }

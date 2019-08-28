@@ -1,16 +1,8 @@
 @model YourAnimeList.Models.AnimeFull
 
-<div class="title card border-0 mt-1 mb-1">
-<h4 class="mb-3">Search for Anime</h4>
-<form asp-controller="Home" asp-action="Index">
-    <p>
-        <input class="animeSearch title shadow border-0" type="text" name="SearchString" placeholder="e.g. Naruto">
-    </p>
-</form>
-</div>
 
 <h2 class="title">@Model.Title</h2>
-<hr />
+<hr class="container"/>
 <ul class="noBullet">
 
     <div class="row">
