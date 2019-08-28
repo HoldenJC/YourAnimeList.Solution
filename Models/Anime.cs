@@ -55,6 +55,8 @@ namespace YourAnimeList.Models
     public int Scored_By { get; set; }
     public int Popularity { get; set; }
     public string Premiered { get; set; }
+    public string Rank { get; set; }
+    public string Status { get; set; }
     public JObject Related { get; set; }
 
     public static AnimeFull GetAnimeDetails(string id)

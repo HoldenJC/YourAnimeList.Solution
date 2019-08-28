@@ -7,36 +7,77 @@
 
     <div class="row">
         <div class="col-md-5"> 
-            <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">English Title:</span> @Model.Title_English</li></div>
-            <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">Japanese Title:</span> @Model.Title_Japanese</li></div>
-            <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">Premiered:</span> @Model.Premiered</li></div>
-            <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">Synopsis:</span> @Model.Synopsis</li></div>
-            <div class="card bg-light mb-3 mx-md-n3 pt-1 shadow-sm info stats">
-                <li class="stat-title">Episodes</li>
-                <li class="stat">@Model.Episodes</li>
+            @if(@Model.Image_Url != null)
+            {
+            <div class="card shadow-sm ml-4 mr-4 mb-3 rounded">
+                <img src=@Model.Image_Url class="card-img-top rounded">
             </div>
-            <div class="card bg-light mb-3 mx-md-n3 p-0 shadow-sm info stats">
-                <li class="stat-title">Review Score</li>
-                <li class="stat">@Model.Score</li>
-            </div>
-            <div class="card bg-light mb-3 mx-md-n3 p-0 shadow-sm info stats">
-                <li class="stat-title">Reviews</li>
-                <li class="stat">@Model.Scored_By</li>
-            </div>
-            <div class="card bg-light mb-3 mx-md-n3 p-0 shadow-sm info stats">
-                <li class="stat-title">Popularity Rank</li>
-                <li class="stat">@Model.Popularity</li>
-            </div>          
+            }
+            @if(@Model.Title_English != null)
+            {
+                <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">English Title:</span> @Model.Title_English</li></div>
+            }
+            @if(@Model.Title_Japanese != null)
+            {
+                <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">Japanese Title:</span> @Model.Title_Japanese</li></div>
+            }
+            @if(@Model.Premiered != null)
+            {
+                <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">Premiered:</span> @Model.Premiered</li></div>
+            }
+            <div class="card mx-md-n3 shadow-sm bg-light px-md-3 mb-3 pt-1 info">
+                <blockquote class="blockquote mb-0">
+                    <p><span class="stat-title">Synopsis:</span> @Model.Synopsis</p>
+                </blockquote>
+            </div>    
         </div>
 
         <div class="col">
+            @if(@Model.Trailer_Url != null)
+            {
             <li>
                 <div class="embed-responsive embed-responsive-16by9 shadow rounded">
                     <iframe class="embed-responsive-item" src=@Model.Trailer_Url allowfullscreen></iframe>
                 </div>
             </li>
+            }
+
+            <li class="title font-weight-bold">Show Statistics</li>
+            <div class="row stat-row">
+                <div class="col card bg-light mr-2 ml-3 mb-2 mb p-0 shadow-sm info stats">
+                    <li class="stat-title">Episodes</li>
+                    <li class="stat">@Model.Episodes</li>
+                </div>
+                <div class="col card bg-light mr-3 ml-2 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Review Score</li>
+                    <li class="stat">@Model.Score</li>
+                </div>
+            </div>
+            <div class="row stat-row">
+                <div class="col card bg-light mr-2 ml-3 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Popularity Rank</li>
+                    <li class="stat">@Model.Popularity</li>
+                </div>
+                <div class="col card bg-light mr-3 ml-2 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Reviews</li>
+                    <li class="stat">@Model.Scored_By</li>
+                </div>
+            </div>
+            <div class="row stat-row">
+                <div class="col card bg-light mr-2 ml-3 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Show Status</li>
+                    <li class="stat">@Model.Status</li>
+                </div>
+                <div class="col card bg-light mr-3 ml-2 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Review Rank</li>
+                    <li class="stat">@Model.Rank</li>
+                </div>
+            </div>
+
+            @if(@Model.Related.ContainsKey("Adaptation") | @Model.Related.ContainsKey("Prequel") | @Model.Related.ContainsKey("Side story") | @Model.Related.ContainsKey("Spin-off") | @Model.Related.ContainsKey("Other") | @Model.Related.ContainsKey("Sequel"))
+            {
             <div class="list-group">
-            <li class="title">Related Anime</li>
+            <li class="title font-weight-bold">Related Anime</li>
             <div class="shadow">
             @foreach(var item in Model.Related)
                     {
@@ -50,6 +91,7 @@
                     }
             </div>
             </div>
+            }
         </div>
     </div>       
 </ul>

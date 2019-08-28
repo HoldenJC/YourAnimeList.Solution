@@ -152,10 +152,10 @@ li {
   position: absolute !important;
   top: 50%;
   left: 50%;
-  width: 700px;
-  height: 700px;
-  margin-top: -350px; /* Half the height */
-  margin-left: -350px;
+  width: 500px;
+  height: 500px;
+  margin-top: -250px; /* Half the height */
+  margin-left: -250px;
 }
 
 .searchTitle {
@@ -163,10 +163,19 @@ li {
 }
 
 .stat-title {
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 0 !important;
 }
 
 .stat {
   margin-bottom: 0 !important;
+}
+
+blockquote {
+  font-size: 15px !important;
+}
+
+.stat-row {
+  font-size: 14px;
 }
