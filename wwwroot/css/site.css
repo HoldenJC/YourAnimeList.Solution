@@ -140,7 +140,11 @@ li {
   text-align: center;
 }
 
+.info {
+  vertical-align: middle !important;
+}
 .stats {
+  text-align: center;
   vertical-align: middle !important;
 }
 
@@ -156,4 +160,13 @@ li {
 
 .searchTitle {
   color: rgb(92, 114, 138);
+}
+
+.stat-title {
+  font-weight: bold;
+  margin-bottom: 0 !important;
+}
+
+.stat {
+  margin-bottom: 0 !important;
 }
