@@ -153,3 +153,7 @@ li {
   margin-top: -350px; /* Half the height */
   margin-left: -350px;
 }
+
+.searchTitle {
+  color: rgb(92, 114, 138);
+}
