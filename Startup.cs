@@ -38,7 +38,7 @@ namespace YourAnimeList
               .AddDbContext<YourAnimeListContext>(options => options
               .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ThrowawayUser, IdentityRole>()
                       .AddEntityFrameworkStores<YourAnimeListContext>()
                       .AddDefaultTokenProviders();
             //Password Options

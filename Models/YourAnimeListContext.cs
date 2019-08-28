@@ -6,9 +6,10 @@ using System.IO;
 
 namespace YourAnimeList.Models
 {
-    public class YourAnimeListContext : IdentityDbContext<ApplicationUser>
+    public class YourAnimeListContext : IdentityDbContext<ThrowawayUser>
     {
-        public DbSet<UserAnime> UserAnimes {get;set;}
+        public DbSet<AppUser> AppUsers {get;set;}
+        public DbSet<AnimeFull> UserAnimes {get;set;}
         public YourAnimeListContext(DbContextOptions options) :base(options) { }
     }
 }

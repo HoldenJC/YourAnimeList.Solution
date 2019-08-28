@@ -9,7 +9,7 @@ using YourAnimeList.Models;
 namespace YourAnimeList.Migrations
 {
     [DbContext(typeof(YourAnimeListContext))]
-    [Migration("20190827173048_Initial")]
+    [Migration("20190828230821_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,7 +126,48 @@ namespace YourAnimeList.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("YourAnimeList.Models.ApplicationUser", b =>
+            modelBuilder.Entity("YourAnimeList.Models.AnimeFull", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Image_Url");
+
+                    b.Property<string>("Synopsis");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("Title_English");
+
+                    b.Property<string>("Title_Japanese");
+
+                    b.Property<string>("Trailer_Url");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserAnime");
+                });
+
+            modelBuilder.Entity("YourAnimeList.Models.AppUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.Property<string>("UserName")
+                        .IsRequired();
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("AppUsers");
+                });
+
+            modelBuilder.Entity("YourAnimeList.Models.ThrowawayUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -178,23 +219,6 @@ namespace YourAnimeList.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("YourAnimeList.Models.UserAnime", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Comments")
-                        .IsRequired();
-
-                    b.Property<int>("Mal_Id");
-
-                    b.Property<bool>("Watched");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("UserAnime");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -205,7 +229,7 @@ namespace YourAnimeList.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("YourAnimeList.Models.ApplicationUser")
+                    b.HasOne("YourAnimeList.Models.ThrowawayUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -213,7 +237,7 @@ namespace YourAnimeList.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("YourAnimeList.Models.ApplicationUser")
+                    b.HasOne("YourAnimeList.Models.ThrowawayUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -226,7 +250,7 @@ namespace YourAnimeList.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("YourAnimeList.Models.ApplicationUser")
+                    b.HasOne("YourAnimeList.Models.ThrowawayUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -234,7 +258,7 @@ namespace YourAnimeList.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("YourAnimeList.Models.ApplicationUser")
+                    b.HasOne("YourAnimeList.Models.ThrowawayUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

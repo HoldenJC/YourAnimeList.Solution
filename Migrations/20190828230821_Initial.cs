@@ -9,6 +9,21 @@ namespace YourAnimeList.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AppUsers",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserName = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUsers", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -54,9 +69,12 @@ namespace YourAnimeList.Migrations
                 {
                     UserId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Mal_Id = table.Column<int>(nullable: false),
-                    Watched = table.Column<bool>(nullable: false),
-                    Comments = table.Column<string>(nullable: false)
+                    Image_Url = table.Column<string>(nullable: true),
+                    Trailer_Url = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Title_English = table.Column<string>(nullable: true),
+                    Title_Japanese = table.Column<string>(nullable: true),
+                    Synopsis = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -209,6 +227,9 @@ namespace YourAnimeList.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AppUsers");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
