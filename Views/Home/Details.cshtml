@@ -1,38 +1,122 @@
 @model YourAnimeList.Models.AnimeFull
 
 
-<h4>Search for Anime</h4>
-<form asp-controller="Home" asp-action="Index">
-    <p>
-    Title: <input type="text" name="SearchString">
-    </p>
-</form>
-
-<h2>All Animes</h2>
-<hr />
-<ul>
+<h2 class="title searchTitle">@Model.Title</h2>
+<hr class="container"/>
+<ul class="noBullet">
 
     <div class="row">
-
-            <div class="col-md-4"> 
-                <li>Title: @Model.Title</li>
-                <li>Title English: @Model.Title_English</li>
-                <li>Title Japanese: @Model.Title_Japanese</li>
-                <li>Synopsis: @Model.Synopsis</li>
-                <li><div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src=@Model.Trailer_Url allowfullscreen></iframe>
-                </div></li>
+        <div class="col-md-5"> 
+            @if(@Model.Image_Url != null)
+            {
+            <div class="card shadow-sm ml-4 mr-4 mb-3 rounded">
+                <img src=@Model.Image_Url class="card-img-top rounded">
             </div>
-        
-        @using(Html.BeginForm("Add","Account"))
-        {
-            <input type="hidden" name="Image_Url" value = @Model.Image_Url />
-            <input type="hidden" name="Title" value = @Model.Title />
-            <input type="hidden" name="Synopsis" value = @Model.Synopsis />
-            <input type="submit" value = "Add to Favorites"/>
-        }
-        
+            }
+            <div class="reco"><li><button class="btn btn-light shadow-sm border rounded mb-2 pt-1 info ml-4 mr-4"><a href="@Url.Action("Recommends", "Home", new { AnimeId = @Model.Mal_Id })">Recommended Animes</a></button><li></div>
+            @if (@GlobalVar.CurrentUser != null)
+            {
+                @using(Html.BeginForm("Add","Account"))
+                {
+                    <input type="hidden" name="Mal_Id" value = @Model.Mal_Id />
+                    <input type="hidden" name="Title" value = @Model.Title />
+                    <input type="hidden" name="Synopsis" value = @Model.Synopsis />
+                    <input type="hidden" name="Image_Url" value = @Model.Image_Url />
+                    <input type="hidden" name="Score" value = @Model.Score />
+                    <input type="submit" value = "Add to Favorites"/>
+                }
+            }
+            
+            @if(@Model.Title_English != null)
+            {
+                <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">English Title:</span> @Model.Title_English</li></div>
+            }
+            @if(@Model.Title_Japanese != null)
+            {
+                <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">Japanese Title:</span> @Model.Title_Japanese</li></div>
+            }
+            @if(@Model.Premiered != null)
+            {
+                <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">Premiered:</span> @Model.Premiered</li></div>
+            }
+            <div class="card mx-md-n3 shadow-sm bg-light px-md-3 mb-3 pt-1 info">
+                <blockquote class="blockquote mb-0">
+                    <p><span class="stat-title">Synopsis:</span> @Model.Synopsis</p>
+                </blockquote>
+            </div>    
+        </div>
 
-    </div>
-        
+        <div class="col">
+            @if(@Model.Trailer_Url != null)
+            {
+            <li>
+                <div class="embed-responsive embed-responsive-16by9 shadow rounded">
+                    <iframe class="embed-responsive-item" src=@Model.Trailer_Url allowfullscreen></iframe>
+                </div>
+            </li>
+            }
+
+            <li class="title font-weight-bold">Show Statistics</li>
+            <div class="row stat-row">
+                <div class="col card bg-light mr-2 ml-3 mb-2 mb p-0 shadow-sm info stats">
+                    <li class="stat-title">Episodes</li>
+                    <li class="stat">@Model.Episodes</li>
+                </div>
+                <div class="col card bg-light mr-3 ml-2 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Review Score</li>
+                    <li class="stat">@Model.Score</li>
+                </div>
+            </div>
+            <div class="row stat-row">
+                <div class="col card bg-light mr-2 ml-3 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Popularity Rank</li>
+                    <li class="stat">@Model.Popularity</li>
+                </div>
+                <div class="col card bg-light mr-3 ml-2 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Reviews</li>
+                    <li class="stat">@Model.Scored_By</li>
+                </div>
+            </div>
+            <div class="row stat-row">
+                <div class="col card bg-light mr-2 ml-3 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Show Status</li>
+                    <li class="stat">@Model.Status</li>
+                </div>
+                <div class="col card bg-light mr-3 ml-2 mb-2 p-0 shadow-sm info stats">
+                    <li class="stat-title">Review Rank</li>
+                    <li class="stat">@Model.Rank</li>
+                </div>
+            </div>
+
+            @if(@Model.Related.ContainsKey("Adaptation") | @Model.Related.ContainsKey("Prequel") | @Model.Related.ContainsKey("Side story") | @Model.Related.ContainsKey("Spin-off") | @Model.Related.ContainsKey("Other") | @Model.Related.ContainsKey("Sequel"))
+            {
+            <div class="list-group">
+            <li class="title font-weight-bold">Related Anime</li>
+            <div class="shadow">
+            @foreach(var item in Model.Related)
+                    {
+                        @foreach(var x in item.Value)
+                        {
+                            @if(@x["type"].ToString() == "anime")
+                            {
+                                <a href="@Url.Action("Details", "Home", new { AnimeId = @x["mal_id"].ToString() })" class="list-group-item list-group-item-action list-group-item-primary">@x["name"]</a>
+                            } 
+                        }
+                    }
+            @foreach(var item in Model.Related)
+                    {
+                        @foreach(var x in item.Value)
+                        {
+                            @if(@x["type"].ToString() == "manga")
+                            {
+                                <a href=@x["url"] class="list-group-item list-group-item-action list-group-item-info">@x["name"] (manga)</a>
+                            }
+                        }
+                    }
+                    
+            </div>
+            </div>
+            }
+        </div>
+    </div>       
 </ul>

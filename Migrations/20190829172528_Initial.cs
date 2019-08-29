@@ -74,7 +74,8 @@ namespace YourAnimeList.Migrations
                     Title = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     Synopsis = table.Column<string>(nullable: true),
-                    Image_Url = table.Column<string>(nullable: true)
+                    Image_Url = table.Column<string>(nullable: true),
+                    Score = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {

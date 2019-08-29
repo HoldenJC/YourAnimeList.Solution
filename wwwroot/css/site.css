@@ -45,6 +45,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -55,6 +56,18 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+.title {
+  text-align: center;
+}
+
+li { 
+  margin-bottom: 5pt;
+}
+
+.noBullet {
+  list-style-type: none;
+}
+
 .artContainer {
   position: relative;
 }
@@ -63,6 +76,39 @@ body {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.animeSearch {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+}
+
+.animeSearch {
+  background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Fhawcons%2F32%2F698627-icon-111-search-256.png&f=1');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.brand img {
+  max-height: 50px;
+}
+
+.nav-login {
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.navbar {
+  background-color: #008CBA !important;
+}
+
+.nav-link {
+  vertical-align: middle !important;
 }
 
 .overlay {
@@ -92,4 +138,50 @@ body {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.info {
+  vertical-align: middle !important;
+}
+.stats {
+  text-align: center;
+  vertical-align: middle !important;
+}
+
+.logo-bg {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  margin-top: -250px; /* Half the height */
+  margin-left: -250px;
+}
+
+.searchTitle {
+  color: rgb(92, 114, 138);
+}
+
+.stat-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 0 !important;
+}
+
+.stat {
+  margin-bottom: 0 !important;
+}
+
+blockquote {
+  font-size: 15px !important;
+}
+
+.stat-row {
+  font-size: 14px;
+}
+
+.reco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

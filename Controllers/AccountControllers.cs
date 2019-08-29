@@ -91,10 +91,7 @@ namespace YourAnimeList.Controllers
         }
         public IActionResult Add(Anime anime)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(GlobalVar.CurrentUser.UserId);
-            Console.ResetColor();
-            var userAnime = new Anime {UserId = GlobalVar.CurrentUser.UserId, Mal_Id = anime.Mal_Id, Image_Url = anime.Image_Url, Title = anime.Title, Synopsis = anime.Synopsis};
+            var userAnime = new Anime { UserId = GlobalVar.CurrentUser.UserId, Mal_Id = anime.Mal_Id, Title = anime.Title, Synopsis = anime.Synopsis, Image_Url = anime.Image_Url, Score = anime.Score };
             _db.UserAnimes.Add(userAnime);
             _db.SaveChanges();
             return Redirect("Details");

@@ -1,32 +1,35 @@
 ﻿@model IEnumerable<YourAnimeList.Models.Anime>
 
 
-<h4>Search for Anime</h4>
-<form asp-controller="Home" asp-action="Index">
-    <p>
-    Title: <input type="text" name="SearchString">
-    </p>
-</form>
-
-<h2>All Animes</h2>
-<hr />
-<ul>
+<h2 class="title searchTitle">@Model.First().Title / Similar Titles</h2>
+<hr class="container" />
+<ul class="noBullet">
 
     <div class="row">
-
+        <div class="card-deck">
         @foreach (var anime in Model)
         {
-            <div class="col-md-4"> 
-                <div class="artContainer">
-                    <a href="@Url.Action("Details", "Home", new { AnimeId = anime.Mal_Id })"><img class="coverArt" src=@Html.DisplayFor(modelItem => anime.Image_Url)>
+            <div class="col-md-4">
+            
+                <div class="card mb-3 shadow">
+                    <!-- <img src="@Html.DisplayFor(modelItem => anime.Image_Url)" class="card-img-top previewArt" alt="..."> -->
+                    <div class="artContainer">
+                    <a href="@Url.Action("Details", "Home", new { AnimeId = anime.Mal_Id })"><img class="coverArt card-img-top" src=@Html.DisplayFor(modelItem => anime.Image_Url)>
                     <div class="overlay">
                         <div class="text">Click for Details</div>
                     </div></a>
-                </div>
-                <li>Title: @Html.DisplayFor(modelItem => anime.Title)</li>
-                <li>Synopsis: @Html.DisplayFor(modelItem => anime.Synopsis)</li>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => anime.Title)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => anime.Synopsis)</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Average Score: @Html.DisplayFor(modelItem => anime.Score)</small>
+                    </div>
+                </div>        
             </div>
-        }
 
+        }
+        </div>
     </div>
 </ul>

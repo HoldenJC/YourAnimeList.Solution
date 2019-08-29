@@ -133,6 +133,8 @@ namespace YourAnimeList.Migrations
 
                     b.Property<int>("Mal_Id");
 
+                    b.Property<float>("Score");
+
                     b.Property<string>("Synopsis");
 
                     b.Property<string>("Title");

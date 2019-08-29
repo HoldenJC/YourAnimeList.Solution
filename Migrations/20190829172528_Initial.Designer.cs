@@ -9,7 +9,7 @@ using YourAnimeList.Models;
 namespace YourAnimeList.Migrations
 {
     [DbContext(typeof(YourAnimeListContext))]
-    [Migration("20190829161007_Initial")]
+    [Migration("20190829172528_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,6 +134,8 @@ namespace YourAnimeList.Migrations
                     b.Property<string>("Image_Url");
 
                     b.Property<int>("Mal_Id");
+
+                    b.Property<float>("Score");
 
                     b.Property<string>("Synopsis");
 
