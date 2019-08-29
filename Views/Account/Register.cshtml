@@ -32,7 +32,7 @@
     @Html.LabelFor(m => m.Password)
     </div>
     <div class="col-sm-1 mb-1">
-    @Html.TextBoxFor(m => m.Password)
+    @Html.TextBoxFor(m => m.Password, new {@type="password"})
     </div>
   </div>
   <div class="row">
@@ -40,7 +40,7 @@
     @Html.LabelFor(m => m.ConfirmPassword)
     </div>
     <div class="col-sm-1 mb-1">
-    @Html.TextBoxFor(m => m.ConfirmPassword)
+    @Html.TextBoxFor(m => m.ConfirmPassword, new {@type="password"})
     </div>
   </div>
   <div class="row">
