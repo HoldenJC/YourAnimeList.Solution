@@ -24,7 +24,14 @@
                 </div></li>
             </div>
         
-        @Html.ActionLink("Add to Favorites", "Add", "Account", new {AnimeFull = @Model})
+        @using(Html.BeginForm("Add","Account"))
+        {
+            <input type="hidden" name="Image_Url" value = @Model.Image_Url />
+            <input type="hidden" name="Title" value = @Model.Title />
+            <input type="hidden" name="Synopsis" value = @Model.Synopsis />
+            <input type="submit" value = "Add to Favorites"/>
+        }
+        
 
     </div>
         

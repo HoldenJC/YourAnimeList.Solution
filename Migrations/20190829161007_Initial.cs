@@ -67,18 +67,18 @@ namespace YourAnimeList.Migrations
                 name: "UserAnime",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false)
+                    DbId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Image_Url = table.Column<string>(nullable: true),
-                    Trailer_Url = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: false),
+                    Mal_Id = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
-                    Title_English = table.Column<string>(nullable: true),
-                    Title_Japanese = table.Column<string>(nullable: true),
-                    Synopsis = table.Column<string>(nullable: true)
+                    Url = table.Column<string>(nullable: true),
+                    Synopsis = table.Column<string>(nullable: true),
+                    Image_Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserAnime", x => x.UserId);
+                    table.PrimaryKey("PK_UserAnime", x => x.DbId);
                 });
 
             migrationBuilder.CreateTable(

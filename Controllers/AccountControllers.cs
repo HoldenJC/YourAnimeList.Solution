@@ -69,7 +69,7 @@ namespace YourAnimeList.Controllers
 
         public ActionResult Details()
         {
-            List<AnimeFull> AnimeList = new List<AnimeFull> ();
+            List<Anime> AnimeList = new List<Anime> ();
             foreach (var useranime in _db.UserAnimes)
             {
                 if (useranime.UserId == GlobalVar.CurrentUser.UserId)
@@ -89,10 +89,13 @@ namespace YourAnimeList.Controllers
         {
             return View();
         }
-        public IActionResult Add(AnimeFull anime)
+        public IActionResult Add(Anime anime)
         {
-            anime.UserId = GlobalVar.CurrentUser.UserId;
-            _db.UserAnimes.Add(anime);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(GlobalVar.CurrentUser.UserId);
+            Console.ResetColor();
+            var userAnime = new Anime {UserId = GlobalVar.CurrentUser.UserId, Mal_Id = anime.Mal_Id, Image_Url = anime.Image_Url, Title = anime.Title, Synopsis = anime.Synopsis};
+            _db.UserAnimes.Add(userAnime);
             _db.SaveChanges();
             return Redirect("Details");
         }

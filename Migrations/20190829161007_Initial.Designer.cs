@@ -9,7 +9,7 @@ using YourAnimeList.Models;
 namespace YourAnimeList.Migrations
 {
     [DbContext(typeof(YourAnimeListContext))]
-    [Migration("20190828230821_Initial")]
+    [Migration("20190829161007_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,24 +126,24 @@ namespace YourAnimeList.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("YourAnimeList.Models.AnimeFull", b =>
+            modelBuilder.Entity("YourAnimeList.Models.Anime", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("DbId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Image_Url");
+
+                    b.Property<int>("Mal_Id");
 
                     b.Property<string>("Synopsis");
 
                     b.Property<string>("Title");
 
-                    b.Property<string>("Title_English");
+                    b.Property<string>("Url");
 
-                    b.Property<string>("Title_Japanese");
+                    b.Property<int>("UserId");
 
-                    b.Property<string>("Trailer_Url");
-
-                    b.HasKey("UserId");
+                    b.HasKey("DbId");
 
                     b.ToTable("UserAnime");
                 });

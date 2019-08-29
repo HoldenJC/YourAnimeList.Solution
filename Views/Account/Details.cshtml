@@ -10,8 +10,8 @@
 <h1>Hello @GlobalVar.CurrentUser.UserName</h1>
 @Html.ActionLink("Return Home", "Index", "Home")
 
-@foreach (AnimeFull anime in ViewBag.Treasure)
+<br>
+@foreach (Anime anime in ViewBag.Treasure)
 {
-
-    @Html.DisplayName(anime.Title_English)
+    <li>@Html.DisplayName(anime.Title)</li>
 }

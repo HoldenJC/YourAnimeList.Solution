@@ -9,7 +9,7 @@ namespace YourAnimeList.Models
     public class YourAnimeListContext : IdentityDbContext<ThrowawayUser>
     {
         public DbSet<AppUser> AppUsers {get;set;}
-        public DbSet<AnimeFull> UserAnimes {get;set;}
+        public DbSet<Anime> UserAnimes {get;set;}
         public YourAnimeListContext(DbContextOptions options) :base(options) { }
     }
 }
