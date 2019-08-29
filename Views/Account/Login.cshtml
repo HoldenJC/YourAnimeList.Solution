@@ -10,13 +10,29 @@
 <hr />
 @using (Html.BeginForm())
 {
+  <div class="row">
+    <div class="col-sm-1">
     @Html.LabelFor(m => m.UserName)
+    </div>
+    <div class="col-sm-1">
     @Html.TextBoxFor(m => m.UserName)
-    <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1">
     @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password)
+    </div>
+    <div class="col-sm-1">
+    @Html.TextBoxFor(m => m.Password)
+    </div>
+  </div>
+  <div class="row">
+    <div class="mt-2 col-sm-2">
+      <input class="btn btn-primary border rounded" type="Submit" value="Log in" />
+    </div>
+  </div>
 
-    <input type="Submit" value="Log in" class="btn btn-default" />
+    
   <hr>
   <p>No Account?</p>
     @Html.ActionLink("Register Here", "Register")

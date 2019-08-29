@@ -28,7 +28,7 @@ namespace YourAnimeList.Models
     public static List<Anime> GetAnimes(string query)
     {
         var client = new RestClient("https://api.jikan.moe/v3");
-        var request = new RestRequest("search/anime?q=" + query + "&limit=9", Method.GET);
+        var request = new RestRequest("search/anime?q=" + query, Method.GET);
         var response = new RestResponse();
         Task.Run(async () =>
         {

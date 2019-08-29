@@ -29,35 +29,25 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        @if (@GlobalVar.CurrentUser != null)
-                        {
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Details">@GlobalVar.CurrentUser.UserName</a>
-                        </li>
-                        <li>
-                            @using (Html.BeginForm("LogOff", "Account"))
-                            {
-                                <input type="submit" class="btn btn-default" value="Log Out"/>
-                            }
-                        </li>
-                        }                     
-                        else 
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
-                        }
-                        
                         <form asp-controller="Home" asp-action="Index">
                             <input class="animeSearch title bg-light border-0 rounded" type="text" name="SearchString" placeholder="Search">
                         </form>
-                        <div class="nav-login"><li class="nav-item">
-                            <div class="login-link"><a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Login</a></div>
-                        </li></div>
 
+                        @if (@GlobalVar.CurrentUser != null)
+                        {
+                            <div class="user-list"><li class="nav-item">
+                                <div class="login-link"><a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Details">@GlobalVar.CurrentUser.UserName's List</a></div>
+                            </li></div>
+                            <div class="nav-login"><li class="nav-item">
+                                <div class="login-link"><a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="LogOff">Logout</a></div>
+                            </li></div>
+                        } else
+                        {
+                            <div class="nav-login"><li class="nav-item">
+                                <div class="login-link"><a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Login</a></div>
+                            </li></div>
+                        }    
+                        
                     </ul>
                 </div>
             </div>

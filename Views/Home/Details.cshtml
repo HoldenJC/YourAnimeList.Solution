@@ -9,23 +9,34 @@
         <div class="col-md-5"> 
             @if(@Model.Image_Url != null)
             {
-            <div class="card shadow-sm ml-4 mr-4 mb-3 rounded">
-                <img src=@Model.Image_Url class="card-img-top rounded">
-            </div>
-            }
-            <div class="reco"><li><button class="btn btn-light shadow-sm border rounded mb-2 pt-1 info ml-4 mr-4"><a href="@Url.Action("Recommends", "Home", new { AnimeId = @Model.Mal_Id })">Recommended Animes</a></button><li></div>
-            @if (@GlobalVar.CurrentUser != null)
-            {
-                @using(Html.BeginForm("Add","Account"))
+                @if (@GlobalVar.CurrentUser != null)
                 {
+                <div class="card shadow-sm ml-4 mr-4 mb-3 rounded artContainer">
+                    <a href="@Url.Action("Add", "Account", new { Mal_Id = @Model.Mal_Id, Title = @Model.Title, Synopsis = @Model.Synopsis, Image_Url = @Model.Image_Url, Score = @Model.Score })"><img class="coverArt card-img-top rounded" src=@Model.Image_Url>
+                    <div class="overlay">
+                        <div class="text">Add to Favorites</div>
+                    </div></a>
+                </div>
+                } else {
+                    <div class="card shadow-sm ml-4 mr-4 mb-3 rounded">
+                        <img src=@Model.Image_Url class="card-img-top rounded">
+                    </div>
+                }
+            } else {
+                @if(@GlobalVar.CurrentUser != null)
+                {
+                    @using(Html.BeginForm("Add","Account"))
+                    {
                     <input type="hidden" name="Mal_Id" value = @Model.Mal_Id />
                     <input type="hidden" name="Title" value = @Model.Title />
                     <input type="hidden" name="Synopsis" value = @Model.Synopsis />
                     <input type="hidden" name="Image_Url" value = @Model.Image_Url />
                     <input type="hidden" name="Score" value = @Model.Score />
                     <input type="submit" value = "Add to Favorites"/>
+                    }
                 }
             }
+            <div class="reco"><li><button class="btn btn-light shadow-sm border rounded mb-2 pt-1 info ml-4 mr-4"><a href="@Url.Action("Recommends", "Home", new { AnimeId = @Model.Mal_Id })">Recommended Animes</a></button><li></div>
             
             @if(@Model.Title_English != null)
             {

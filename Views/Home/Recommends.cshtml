@@ -1,13 +1,18 @@
 @model YourAnimeList.Models.AnimeRecommends
 
-<h2 class="title searchTitle">Recommendations</h2>
-<hr class="container" />
-<ul class="noBullet">
+@if(Model.Recommendations == null | Model.Recommendations.Count == 0)
+{
+    <h4 class="no-reco">No recommendations for this anime!</h4>
+} else {
+    <h2 class="title searchTitle">Recommendations</h2>
+    <hr class="container" />
+    <ul class="noBullet">
 
-<div class="row">
-        <div class="card-deck">
-        @foreach (var anime in Model.Recommendations)
-        {           
+    <div class="row">
+            <div class="card-deck">
+            
+            @foreach (var anime in Model.Recommendations)
+            {           
             <div class="col-md-4">
             
                 <div class="card mb-3 shadow">
@@ -24,10 +29,9 @@
                         <small class="text-muted">Recommendations: @anime["recommendation_count"]</small>
                     </div>
                 </div>        
+            </div>  
+            }
             </div>
-
-        }
         </div>
-    </div>
-    
-</ul>
+    </ul>
+} 

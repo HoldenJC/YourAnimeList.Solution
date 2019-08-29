@@ -60,6 +60,11 @@ body {
   text-align: center;
 }
 
+.no-reco {
+  text-align: center !important;
+  color: rgb(200, 114, 18);
+}
+
 li { 
   margin-bottom: 5pt;
 }
@@ -84,6 +89,10 @@ li {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 350px;
+}
+
+.card-deck .col-md-4 {
+  min-width: 20vw !important;
 }
 
 .animeSearch {
