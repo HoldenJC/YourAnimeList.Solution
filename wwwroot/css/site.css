@@ -179,3 +179,9 @@ blockquote {
 .stat-row {
   font-size: 14px;
 }
+
+.reco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

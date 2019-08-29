@@ -13,6 +13,7 @@
                 <img src=@Model.Image_Url class="card-img-top rounded">
             </div>
             }
+            <div class="reco"><li><button class="btn btn-light shadow-sm border rounded mb-2 pt-1 info ml-4 mr-4"><a href="@Url.Action("Recommends", "Home", new { AnimeId = @Model.Mal_Id })">Recommended Animes</a></button><li></div>
             @if(@Model.Title_English != null)
             {
                 <div class="card bg-light px-md-3 mx-md-n3 mb-3 pt-1 shadow-sm info"><li><span class="stat-title">English Title:</span> @Model.Title_English</li></div>

@@ -1,0 +1,33 @@
+@model YourAnimeList.Models.AnimeRecommends
+
+<h2 class="title searchTitle">Recommendations</h2>
+<hr class="container" />
+<ul class="noBullet">
+
+<div class="row">
+        <div class="card-deck">
+        @foreach (var anime in Model.Recommendations)
+        {           
+            <div class="col-md-4">
+            
+                <div class="card mb-3 shadow">
+                    <div class="artContainer">
+                    <a href="@Url.Action("Details", "Home", new { AnimeId = anime["mal_id"].ToString() })"><img class="coverArt card-img-top" src=@anime["image_url"]>
+                    <div class="overlay">
+                        <div class="text">Click for Details</div>
+                    </div></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mb-1">@anime["title"]</h5>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Recommendations: @anime["recommendation_count"]</small>
+                    </div>
+                </div>        
+            </div>
+
+        }
+        </div>
+    </div>
+    
+</ul>

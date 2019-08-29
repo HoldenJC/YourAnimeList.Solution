@@ -44,7 +44,8 @@ namespace YourAnimeList.Models
 
   public class AnimeFull
   {
-    public string Image_Url {get; set; }
+    public int Mal_Id { get; set; }
+    public string Image_Url { get; set; }
     public string Trailer_Url { get; set; }
     public string Title { get; set; }
     public string Title_English { get; set; }
@@ -71,6 +72,35 @@ namespace YourAnimeList.Models
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response.Content);
       var animeDetails = JsonConvert.DeserializeObject<AnimeFull>(jsonResponse.ToString());
       return animeDetails;
+    }
+
+    public static Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)
+    {
+      var tcs = new TaskCompletionSource<IRestResponse>();
+      theClient.ExecuteAsync(theRequest, response =>
+      {
+        tcs.SetResult(response);
+      });
+      return tcs.Task;
+    }
+  }
+
+  public class AnimeRecommends
+  {
+    public JArray Recommendations { get; set; }
+
+    public static AnimeRecommends GetAnimeRecommends(string id)
+    {
+      var client = new RestClient("https://api.jikan.moe/v3");
+      var request = new RestRequest("anime/" + id + "/recommendations", Method.GET);
+      var response = new RestResponse();
+      Task.Run(async () =>
+      {
+        response = await GetResponseContentAsync(client, request) as RestResponse;
+      }).Wait();
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response.Content);
+      var animeRecommends = JsonConvert.DeserializeObject<AnimeRecommends>(jsonResponse.ToString());
+      return animeRecommends;
     }
 
     public static Task<IRestResponse> GetResponseContentAsync(RestClient theClient, RestRequest theRequest)

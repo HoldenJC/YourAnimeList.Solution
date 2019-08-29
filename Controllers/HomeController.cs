@@ -25,5 +25,15 @@ namespace YourAnimeList.Controllers
       return View(animeDetails);
     }
 
+    public IActionResult Recommends(string animeId)
+    {
+      var animeRecommends = AnimeRecommends.GetAnimeRecommends("1");
+      if(animeId != null && animeId != "")
+      {
+        animeRecommends = AnimeRecommends.GetAnimeRecommends(animeId);
+      }
+      return View(animeRecommends);
+    }
+
   }
 }
