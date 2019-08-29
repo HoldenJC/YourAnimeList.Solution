@@ -77,6 +77,18 @@ namespace YourAnimeList.Controllers
                     AnimeList.Add(useranime);
                 }
             }
+            for(int i = 0; i < AnimeList.Count; i++)
+            {
+                for(int j = i+1; j < AnimeList.Count; j++)
+                {
+                    if(AnimeList[i].Mal_Id == AnimeList[j].Mal_Id)
+                    {
+                        AnimeList.RemoveAt(j);
+                        j--;
+                    }
+                }
+            }
+
             ViewBag.Treasure = AnimeList;
             return View();
         }

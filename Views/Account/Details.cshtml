@@ -4,6 +4,13 @@
 <h2 class="title searchTitle">@GlobalVar.CurrentUser.UserName's List</h2>
 <hr class="container" />
 <ul class="noBullet">
+@{
+    var x = ViewBag.Treasure.Count.ToString();
+}
+@if(x == "0")
+{
+    <h3 class="no-reco mr-5">No animes in your list currently!</h3>
+}
 
     <div class="row">
         <div class="card-deck">
